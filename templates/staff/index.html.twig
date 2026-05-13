@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Staff
+{% endblock %}
+
+{% block body %}
+	<div class="text-end mb-3">
+		<a href="{{ path('app_staff_new') }}" class="btn btn-primary">Add Staff</a>
+	</div>
+
+	<table class="table table-striped-columns table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Department</th>
+				<th class="text-center w-25">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for staff in staffs %}
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ staff.name }}</td>
+					<td>{{ staff.email }}</td>
+					<td>{{ staff.department.name }}</td>
+					<td class="text-center">
+						<a href="{{ path('app_staff_show', {'id': staff.id}) }}" class="btn btn-primary">Show</a>
+						<a href="{{ path('app_staff_update', {'id': staff.id}) }}" class="btn btn-primary">Update</a>
+						<a href="{{ path('app_staff_delete', {'id': staff.id}) }}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5" class="text-center">No staff found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

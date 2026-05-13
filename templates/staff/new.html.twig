@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Staff
+{% endblock %}
+
+{% block body %}
+
+	{# default order from table  #}
+	{# {{ form(form_staff)}} #}
+
+	{{ form_start(form) }}
+
+		{# <div class="mb-3"> {{ form_label(form.status, 'Custom Label')}}
+		{{ form_widget(form.status, {'attr': {'class': 'form-control-sm'}})}}
+		<small class="text-muted">{{ form_help(form.status)}}</small>
+		<div class='form-error'>
+			{{ form_errors(form.status)}}
+		</div>
+	</div> #}
+
+	<div class="mb-3">
+		<label for="{{ form.status.vars.id }}">{{ field_label(form.status)}}</label>
+		<input type="text" id="{{ form.status.vars.id }}" name="{{ field_name(form.status)}}" value="{{ field_value(form.status)}}" class="form-control"/>
+		<small class="text-muted">{{ field_help(form.status) }}</small>
+		<div class="form-error">
+			{% for error in form.status.vars.errors %}
+				{{ error.message }}
+				{% if not loop.last %}<br>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	{{ form_end(form) }}
+
+{% endblock %}
