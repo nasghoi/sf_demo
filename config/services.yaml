@@ -38,3 +38,5 @@ services:
             $ldap: '@Symfony\Component\Ldap\Ldap'
             $localUserProvider: '@security.user.provider.concrete.app_user_provider'
             $ldapBaseDn: '%env(LDAP_BASE_DN)%'
+            $ldapAdminDn: '%env(LDAP_BIND_DN)%'
+            $ldapAdminPassword: '%env(LDAP_PASSWORD)%'
